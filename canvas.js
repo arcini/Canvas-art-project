@@ -1,27 +1,35 @@
-
 window.addEventListener("load", init);
+var x = NaN;
+var y = NaN;
+var c;
+var g;
+var bg;
+var theBall;
+function init() {
+    document.getElementById("surface").addEventListener("click", function(e) {
+      x = e.pageX - document.getElementById("surface").offsetLeft;
+      y = e.pageY - document.getElementById("surface").offsetTop;
+      theBall = new BouncyBall(new Point(x, y), 50, "red", new Point(Math.floor(Math.random()*10),Math.floor(Math.random()*10)));
+      console.log(theBall);
+      console.log(x);
+      console.log(y);
 
-function init()
-{
-    var c = document.getElementById("surface");
-    var g = c.getContext("2d");
-    var bg = "black";
+    });
+    c = document.getElementById("surface");
+    g = c.getContext("2d");
+    bg = "black";
     g.fillStyle = bg;
     g.fillRect(0, 0, c.width, c.height);
-    var theBall = new BouncyBall(new Point(
-        c.width/2, c.height/2), 50, "red",
-        new Point(5,2))
-    function refresh()
-    {
-        g.fillStyle = bg;
-        g.fillRect(0, 0, c.width, c.height);
-        theBall.draw(g);
-        theBall.move(c);
-    }
     setInterval(refresh, 10);
 }
 
-
+function refresh()
+{
+    g.fillStyle = bg;
+    g.fillRect(0, 0, c.width, c.height);
+    theBall.draw(g);
+    theBall.move(c);
+}
 
 
 class Ball {
