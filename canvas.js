@@ -1,11 +1,9 @@
-window.addEventListener("load", init);
-
 
 window.addEventListener("load", init);
 
 function init()
 {
-    var c = document.getElementById("drawPanel");
+    var c = document.getElementById("surface");
     var g = c.getContext("2d");
     var bg = "black";
     g.fillStyle = bg;
@@ -20,7 +18,7 @@ function init()
         theBall.draw(g);
         theBall.move(c);
     }
-    setInterval(refresh, 100000);
+    setInterval(refresh, 10);
 }
 
 
