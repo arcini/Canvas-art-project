@@ -1,0 +1,9 @@
+h1, h2, .display
+{
+    text-align:center;
+}
+canvas
+{
+    background-color:white;
+    border:solid 1px black;
+}
