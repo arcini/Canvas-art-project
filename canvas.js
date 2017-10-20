@@ -4,12 +4,12 @@ var y = NaN;
 var c;
 var g;
 var bg;
-var theBall;
+var theBall = [];
 function init() {
     document.getElementById("surface").addEventListener("click", function(e) {
       x = e.pageX - document.getElementById("surface").offsetLeft;
       y = e.pageY - document.getElementById("surface").offsetTop;
-      theBall = new BouncyBall(new Point(x, y), 50, "red", new Point(Math.floor(Math.random()*10),Math.floor(Math.random()*10)));
+      theBall.push(new BouncyBall(new Point(x, y), 30, "red", new Point((Math.floor(Math.random()*10)-5),(Math.floor(Math.random()*10)-5))));
       console.log(theBall);
       console.log(x);
       console.log(y);
@@ -17,18 +17,19 @@ function init() {
     });
     c = document.getElementById("surface");
     g = c.getContext("2d");
-    bg = "black";
+    bg = "White";
     g.fillStyle = bg;
     g.fillRect(0, 0, c.width, c.height);
     setInterval(refresh, 10);
 }
 
-function refresh()
-{
+function refresh() {
     g.fillStyle = bg;
     g.fillRect(0, 0, c.width, c.height);
-    theBall.draw(g);
-    theBall.move(c);
+    for (i=0;i<theBall.length;i++) {
+        theBall[i].draw(g);
+        theBall[i].move(c);
+    }
 }
 
 
@@ -42,7 +43,7 @@ class Ball {
     draw(g)
     {
         g.fillStyle = this.color;
-        g.beginPath()
+        g.beginPath();
         g.arc(this.center.x, this.center.y, this.radius, 0, 2*Math.PI);
         g.fill();
     }
