@@ -71,11 +71,13 @@ class BouncyBall extends Ball
         var nextX = this.heading.x + this.center.x;
         if(nextX - this.radius < 0 || nextX + this.radius > c.width)
         {
+          this.center.x = Math.min(Math.max(this.center.x,this.radius),c.width-this.radius);
             this.heading.x = -this.heading.x;
         }
         var nextY = this.heading.y + this.center.y;
         if(nextY - this.radius < 0 || nextY + this.radius > c.height)
         {
+          this.center.y = Math.min(Math.max(this.center.y,this.radius),c.height-this.radius);
             this.heading.y = -this.heading.y;
         }
         this.center.x += this.heading.x;
