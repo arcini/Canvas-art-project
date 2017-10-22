@@ -3,26 +3,34 @@ var x = NaN;
 var y = NaN;
 var c;
 var g;
-var bg;
-var r = 1;
+var bg = "white";
+var r = 20;
 var z = 20;
+var rad = 20;
 var theBall = [];
 function init() {
+    c = document.getElementById("surface");
+    g = c.getContext("2d");
     document.getElementById("surface").addEventListener("click", function(e) {
       x = e.pageX - document.getElementById("surface").offsetLeft;
       y = e.pageY - document.getElementById("surface").offsetTop;
-      theBall.push(new BouncyBall(new Point(x, y), 30, "red", new Point(((Math.random()*z)-z/2), ((Math.random()*z)-z/2))));
+      theBall.push(new BouncyBall(new Point(x, y), rad, randColor(), new Point(((Math.random()*z)-z/2), ((Math.random()*z)-z/2))));
       console.log(theBall);
       console.log(x);
       console.log(y);
-
     });
-    c = document.getElementById("surface");
-    g = c.getContext("2d");
-    bg = "White";
+    document.getElementById("size").addEventListener("input", function(e) {
+        rad = parseInt(document.getElementById("size").value);
+        document.getElementById("sizeValue").innerHTML = document.getElementById("size").value;
+    });
+    
     g.fillStyle = bg;
     g.fillRect(0, 0, c.width, c.height);
     setInterval(refresh, r);
+}
+
+function randColor() {
+  return "rgb(" + Math.floor(Math.random()*256) + ", " + Math.floor(Math.random()*256) + ", " + Math.floor(Math.random()*256) + ")";
 }
 
 function refresh() {
@@ -69,19 +77,21 @@ class BouncyBall extends Ball
     //moves ball within a canvas
     move(c) {
         var nextX = this.heading.x + this.center.x;
-        if(nextX - this.radius < 0 || nextX + this.radius > c.width)
+        if((nextX - this.radius) < 0 || (nextX + this.radius) > c.width)
         {
-            this.center.x = Math.min(Math.max(this.center.x,this.radius), c.width-this.radius);
+            nextX = Math.min(Math.max(nextX, this.radius), c.width-this.radius);
             this.heading.x = -this.heading.x;
+            playSound();
         }
         var nextY = this.heading.y + this.center.y;
-        if(nextY - this.radius < 0 || nextY + this.radius > c.height)
+        if(((nextY - this.radius) < 0) | ((nextY + this.radius) > c.height))
         {
-            this.center.y = Math.min(Math.max(this.center.y,this.radius), c.height-this.radius);
-            this.heading.y = -this.heading.y;
+            nextY = Math.min(Math.max(nextY, this.radius), c.height-this.radius);
+            this.heading.y = -this.heading.y; 
+            playSound();
         }
-        this.center.x += this.heading.x;
-        this.center.y += this.heading.y;
+        this.center.x = nextX;
+        this.center.y = nextY;
     }
 
 }
@@ -97,4 +107,15 @@ class Point {
     distanceTo(p) {
         return Math.hypot(this.x - p.x, this.y - p.y);
     }
+}
+
+function playSound() {
+  let d = document.body.appendChild(document.getElementById("oofSound").cloneNode());
+  setTimeout(removeElemnt(), 1000);
+  d.play();
+  
+  
+  function removeElemnt() {
+    d.remove();
+  }
 }

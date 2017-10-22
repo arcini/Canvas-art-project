@@ -7,3 +7,11 @@ canvas
     background-color:white;
     border:solid 1px black;
 }
+
+table {
+    margin: auto;
+}
+
+p {
+    text-align: center;
+}
