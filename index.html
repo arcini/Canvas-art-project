@@ -10,11 +10,30 @@
   <!-- add your name in lieu of XXXX XXXXX -->
   <h2>Canvas Art Project by Cindy and Alex</h2>
   <table>
-    <tr><td><p><input id="size" type="range" value="20" min="1" max="100" step="1"/></p></td><td></td></tr>
-    <tr><td><p>Size: <span id="sizeValue">20</span>px</p></td><td></td></tr>
+    <tr>
+      <td>
+        <p>
+          <input id="size" type="range" value="20" min="1" max="100" step="1"/>
+        </p>
+      </td>
+      <td>
+        <label class="switch">-
+          
+          <input type="checkbox" id="soundSlider" checked>
+          <span class="slider round"></span>
+        </label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Size: <span id="sizeValue">20</span>px</p>
+      </td>
+      <td>
+        <p>Sound</p>
+      </td>
+    </tr>
   </table>
-  <audio id="oofSound" type="audio/mp3"src="oof.mp3">stop using IE6, nerd</audio>
+  <audio id="oofSound" src="oof.mp3">stop using IE6, nerd</audio>
   <p class="display"><canvas width="800" height="500" id="surface">Get a modern browser, fool!</canvas></p>
-
 </body>
 </html>

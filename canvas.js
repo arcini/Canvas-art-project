@@ -81,14 +81,18 @@ class BouncyBall extends Ball
         {
             nextX = Math.min(Math.max(nextX, this.radius), c.width-this.radius);
             this.heading.x = -this.heading.x;
-            playSound();
+            if (returnChecked()) {
+              playSound();
+            }
         }
         var nextY = this.heading.y + this.center.y;
         if(((nextY - this.radius) < 0) | ((nextY + this.radius) > c.height))
         {
             nextY = Math.min(Math.max(nextY, this.radius), c.height-this.radius);
             this.heading.y = -this.heading.y; 
-            playSound();
+            if (returnChecked()) {
+              playSound();
+            }
         }
         this.center.x = nextX;
         this.center.y = nextY;
@@ -118,4 +122,8 @@ function playSound() {
   function removeElemnt() {
     d.remove();
   }
+}
+
+function returnChecked() {
+  return document.getElementById("soundSlider").checked;
 }
