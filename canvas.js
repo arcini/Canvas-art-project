@@ -33,9 +33,11 @@ function init() {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
       document.getElementById("soundSlider").remove();
       document.getElementById("soundSliderLabel").remove();
+      console.log("removed elements");
+      document.body.remove();
     }
 }
-
++
 function randColor() {
   return "rgb(" + Math.floor(Math.random()*256) + ", " + Math.floor(Math.random()*256) + ", " + Math.floor(Math.random()*256) + ")";
 }
