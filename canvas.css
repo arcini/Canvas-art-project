@@ -54,7 +54,7 @@ p {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: mediumspringgreen;
 }
 
 input:focus + .slider {
@@ -82,4 +82,47 @@ td {
 
 tr {
   
+}
+
+h1, h2 {
+  font-family: "Lobster", cursive;
+}
+
+p, button {
+  font-family: "Lobster Two", cursive;
+}
+
+button {
+  padding: 0.65em;
+  border: none;
+  background-color: lightgray;
+  color: crimson;
+  border-radius: 1em;
+}
+
+button:hover {
+  background-color: crimson;
+  color: white;
+}
+
+#size {
+  -webkit-appearance: none;
+}
+
+#size::-webkit-slider-runnable-track {
+  height: 5px;
+  width: 100%;
+  background: #dddddd;
+  border: none;
+  border-radius: 3px;
+}
+
+#size::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    background-color: mediumspringgreen;
+    margin-top: -0.25em;
 }
