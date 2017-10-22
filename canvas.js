@@ -31,7 +31,7 @@ function init() {
   
     //removes sound slider on mobile devices, since html5 sound is weird on mobile
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/.test(navigator.userAgent) ) {
-      document.getElementById("soundSlider").remove();
+      document.getElementById("switch").remove();
       document.getElementById("soundSliderLabel").remove();
       console.log("removed elements");
     }
