@@ -1,6 +1,7 @@
 window.addEventListener("load", init);
 var x = NaN;
 var y = NaN;
+var soundToPlay = "oofSound";
 var c;
 var g;
 var bg = "white";
@@ -27,6 +28,12 @@ function init() {
     g.fillStyle = bg;
     g.fillRect(0, 0, c.width, c.height);
     setInterval(refresh, r);
+  
+    //removes sound slider on mobile devices, since html5 sound is weird on mobile
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      document.getElementById("soundSlider").remove();
+      document.getElementById("soundSliderLabel").remove();
+    }
 }
 
 function randColor() {
@@ -114,7 +121,7 @@ class Point {
 }
 
 function playSound() {
-  let d = document.body.appendChild(document.getElementById("oofSound").cloneNode());
+  let d = document.body.appendChild(document.getElementById(soundToPlay).cloneNode());
   setTimeout(removeElemnt(), 1000);
   d.play();
   
