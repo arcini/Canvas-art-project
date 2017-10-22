@@ -75,3 +75,11 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+td {
+  padding: 0 1.5em;
+}
+
+tr {
+  
+}

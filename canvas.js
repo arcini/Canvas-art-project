@@ -20,11 +20,22 @@ function init() {
       console.log(x);
       console.log(y);
     });
+  
     document.getElementById("size").addEventListener("input", function(e) {
         rad = parseInt(document.getElementById("size").value);
         document.getElementById("sizeValue").innerHTML = document.getElementById("size").value;
     });
     
+    document.getElementById("meowButton").addEventListener("click", function(e){
+      soundToPlay = "meowSound";
+      console.log("set sound to meow");
+    });
+  
+    document.getElementById("woofButton").addEventListener("click", function(e){
+      soundToPlay = "woofSound";
+      console.log("set sound to woof");
+    });
+  
     g.fillStyle = bg;
     g.fillRect(0, 0, c.width, c.height);
     setInterval(refresh, r);
@@ -33,10 +44,12 @@ function init() {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/.test(navigator.userAgent) ) {
       document.getElementById("switch").remove();
       document.getElementById("soundSliderLabel").remove();
+      document.getElementById("meowButton").remove();
+      document.getElementById("woofButton").remove();
       console.log("removed elements");
     }
 }
-+
+
 function randColor() {
   return "rgb(" + Math.floor(Math.random()*256) + ", " + Math.floor(Math.random()*256) + ", " + Math.floor(Math.random()*256) + ")";
 }
@@ -89,7 +102,7 @@ class BouncyBall extends Ball
         {
             nextX = Math.min(Math.max(nextX, this.radius), c.width-this.radius);
             this.heading.x = -this.heading.x;
-            if (returnChecked()) {
+            if (document.getElementById("soundSlider").checked) {
               playSound();
             }
         }
@@ -98,7 +111,7 @@ class BouncyBall extends Ball
         {
             nextY = Math.min(Math.max(nextY, this.radius), c.height-this.radius);
             this.heading.y = -this.heading.y; 
-            if (returnChecked()) {
+            if (document.getElementById("soundSlider").checked) {
               playSound();
             }
         }
@@ -130,8 +143,4 @@ function playSound() {
   function removeElemnt() {
     d.remove();
   }
-}
-
-function returnChecked() {
-  return document.getElementById("soundSlider").checked;
 }

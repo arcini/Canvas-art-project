@@ -7,7 +7,6 @@
   <script src="canvas.js"></script>
   </head>
 <body>
-  <!-- add your name in lieu of XXXX XXXXX -->
   <h2>Canvas Art Project by Cindy and Alex</h2>
   <table>
     <tr>
@@ -22,6 +21,11 @@
           <span class="slider round"></span>
         </label>
       </td>
+      <td>
+        <p>
+          <button id="meowButton">Meow</button>
+        </p>
+      </td>
     </tr>
     <tr>
       <td>
@@ -30,9 +34,16 @@
       <td>
         <p id="soundSliderLabel">Sound</p>
       </td>
+      <td>
+        <p>
+          <button id="woofButton">Woof</button>
+        </p>
+      </td>
     </tr>
   </table>
   <audio id="oofSound" src="oof.mp3">stop using IE6, nerd</audio>
+  <audio id="meowSound" src="catMeow.mp3">stop using IE6, nerd</audio>
+  <audio id="woofSound" src="dogWoof.mp3">stop using IE6, nerd</audio>
   <p class="display"><canvas width="800" height="500" id="surface">Get a modern browser, fool!</canvas></p>
 </body>
 </html>
