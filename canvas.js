@@ -1,7 +1,7 @@
 window.addEventListener("load", init);
 var x = NaN;
 var y = NaN;
-var soundToPlay = "oofSound";
+var soundToPlay = "bounceSound";
 var c;
 var g;
 var bg = "white";
@@ -20,34 +20,34 @@ function init() {
       console.log(x);
       console.log(y);
     });
-  
+
     document.getElementById("size").addEventListener("input", function(e) {
         rad = parseInt(document.getElementById("size").value);
         document.getElementById("sizeValue").innerHTML = document.getElementById("size").value;
     });
-    
+
     document.getElementById("meowButton").addEventListener("click", function(e){
       soundToPlay = "meowSound";
       console.log("set sound to meow");
     });
-  
+
     document.getElementById("woofButton").addEventListener("click", function(e){
       soundToPlay = "woofSound";
       console.log("set sound to woof");
     });
-  
+
     g.fillStyle = bg;
     g.fillRect(0, 0, c.width, c.height);
     setInterval(refresh, r);
-  
+
     //removes sound slider on mobile devices, since html5 sound is weird on mobile
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/.test(navigator.userAgent) ) {
+    /*if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/.test(navigator.userAgent) ) {
       document.getElementById("switch").remove();
       document.getElementById("soundSliderLabel").remove();
       document.getElementById("meowButton").remove();
       document.getElementById("woofButton").remove();
       console.log("removed elements");
-    }
+    }*/
 }
 
 function randColor() {
@@ -110,7 +110,7 @@ class BouncyBall extends Ball
         if(((nextY - this.radius) < 0) | ((nextY + this.radius) > c.height))
         {
             nextY = Math.min(Math.max(nextY, this.radius), c.height-this.radius);
-            this.heading.y = -this.heading.y; 
+            this.heading.y = -this.heading.y;
             if (document.getElementById("soundSlider").checked) {
               playSound();
             }
@@ -133,14 +133,21 @@ class Point {
         return Math.hypot(this.x - p.x, this.y - p.y);
     }
 }
-
 function playSound() {
   let d = document.body.appendChild(document.getElementById(soundToPlay).cloneNode());
-  setTimeout(removeElemnt(), 1000);
+  setTimeout(removeElemnt(), soundLength());
   d.play();
-  
-  
+
+
   function removeElemnt() {
     d.remove();
+  }
+}
+
+function soundLength() {
+  if (soundToPlay == "swampSound") {
+    return 5000;
+  } else {
+    return 1000;
   }
 }
