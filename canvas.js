@@ -10,6 +10,9 @@ var z = 20;
 var rad = 20;
 var theBall = [];
 function init() {
+    document.getElementById("surface").addEventListener("mouseover", function(e) {
+      bg = randColor();
+    });
     c = document.getElementById("surface");
     g = c.getContext("2d");
     document.getElementById("surface").addEventListener("click", function(e) {
