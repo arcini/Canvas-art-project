@@ -81,7 +81,7 @@ td {
 }
 
 tr {
-  
+
 }
 
 h1, h2 {
@@ -105,11 +105,11 @@ button:hover {
   color: white;
 }
 
-#size {
+.sliderClass {
   -webkit-appearance: none;
 }
 
-#size::-webkit-slider-runnable-track {
+.sliderClass::-webkit-slider-runnable-track {
   height: 5px;
   width: 100%;
   background: #dddddd;
@@ -117,7 +117,7 @@ button:hover {
   border-radius: 3px;
 }
 
-#size::-webkit-slider-thumb {
+.sliderClass::-webkit-slider-thumb {
     -webkit-appearance: none;
     border: none;
     height: 1em;
