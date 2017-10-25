@@ -9,7 +9,7 @@ var r = 20;
 var z = 20;
 var rad = 20;
 var theBall = [];
-var vol = .5;
+var vol = 0.5;
 function init() {
     document.getElementById("surface").addEventListener("mouseover", function(e) {
       bg = randColor();
@@ -39,14 +39,16 @@ function init() {
       soundToPlay = "woofSound";
       console.log("set sound to woof");
     });
+    document.getElementById("putVol").innerHTML = (vol*100).toFixed(0) + "%";
     document.getElementById("woofSound").volume = vol;
     document.getElementById("bounceSound").volume = vol;
     document.getElementById("meowSound").volume = vol;
     document.getElementById("volume").addEventListener("input", function(e) {
       vol = (document.getElementById("volume").value*0.1);
+      document.getElementById("putVol").innerHTML = (vol*100).toFixed(0) + "%";
       let audioElements = document.getElementsByTagName('audio');
       for (i=0; i < audioElements.length; i++) {
-        audioElements[i].volume = vol;
+        audioElements[i].volume = Math.floor(vol*10)*0.1;
         console.log(audioElements[i].volume);
       }
     });
@@ -150,6 +152,7 @@ class Point {
 }
 function playSound() {
   let d = document.body.appendChild(document.getElementById(soundToPlay).cloneNode(true));
+  d.volume = vol;
   console.log(d.volume);
   setTimeout(removeElemnt(), soundLength());
   d.play();
