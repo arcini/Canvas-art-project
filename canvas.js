@@ -114,7 +114,7 @@ class BouncyBall extends Ball
     }
     //moves ball within a canvas
     move(c) {
-        var nextX = this.heading.x + this.center.x;
+        var nextX = this.heading.x + this.center.x + 5;
         if((nextX - this.radius) < 0 || (nextX + this.radius) > c.width)
         {
             nextX = Math.min(Math.max(nextX, this.radius), c.width-this.radius);
@@ -123,7 +123,7 @@ class BouncyBall extends Ball
               playSound();
             }
         }
-        var nextY = this.heading.y + this.center.y;
+        var nextY = this.heading.y + this.center.y + 5;
         if(((nextY - this.radius) < 0) | ((nextY + this.radius) > c.height))
         {
             nextY = Math.min(Math.max(nextY, this.radius), c.height-this.radius);
